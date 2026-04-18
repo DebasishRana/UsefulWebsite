@@ -1,5 +1,5 @@
 body{
-  background-color: #84B179;
+  background-color: white;
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
@@ -33,42 +33,62 @@ header{
   display: flex;
   align-items: center;
   border-radius: 50px;
+   border: 2px solid black;
   background: #e2e8f0;
   padding: 5px 10px;
 }
 .input {
-flex: 1;
-padding: 10px;
-border: none;
-background: transparent;
-font-size: 16px;
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: transparent;
+  font-size: 16px;
 }
 
-.input {
+.input:focus {
 outline: none;
 }
 
 /* ICON */
-.search__icon {
+.search_icon {
 width: 20px;
 height: 20px;
 fill: #64748b;
 }
 
-/* BUTTONS */
+/* Sign In button */
 button {
 background-color: #47d455;
 border: none;
 padding: 16px 24px;
-color: white;
+color: black;
 border-radius: 8px;
 cursor: pointer;
 }
 
-button {
+button:hover {
 background-color: #16a34a;
 }
-
+/* Menu button */
+.menu{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #090a0a00;
+  color: black;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.menu:hover{
+  background-color: #334155;
+}
+.menu:active{
+  transform: scale(0.95);
+}
+/* Navigation bar */
 .topnav{
   display: flex;
   justify-content: space-evenly;
@@ -99,3 +119,205 @@ background-color: #16a34a;
   color: white;
   background-color: #22c55e;
 }
+
+/* menu overlay*/
+.menu-overlay{
+  position: fixed;
+  top: 125px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #eaedf1;
+  color: black;
+  display: none;
+  flex-direction: column;
+  padding: 5px;
+  z-index: 1000;
+  overflow-y: auto;
+  
+}
+.menu-overlay.active{
+  display: flex;
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px;
+}
+
+.menu-buttons {/*close button*/
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: static;
+  margin-right: 35px;
+}
+
+
+.menu-grid{/*templets*/
+  display: grid;
+  justify-content: start;
+  grid-template-columns: repeat(3,1fr);
+  gap: 100px;
+  margin-top: 50px;
+  margin-left: 50px;
+}
+.card{
+  background-color: #abbcd8;
+  padding: 80px;
+  border-radius: 20px;
+}
+.card h3{
+  font-size: 24px;
+}
+.card p{
+  font-size: 18px;
+}
+
+/* darkmode */
+.switch{
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 4em;
+  height: 2.2em;
+  border-radius: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.switch input{
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider{
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  cursor: pointer;
+  background-color: #2a2a2a;
+  transition: 0.4s;
+  border-radius: 30px;
+  overflow: hidden;
+}
+.slider:before{
+  position: absolute;
+  content: "";
+  height: 1.2em;
+  width: 1.2em;
+  border-radius: 20px;
+  left: 0.5em;
+  bottom: 0.5em;
+  transition: 0.4s;
+  transition-timing-function: cubic-bezier(0.81, -0.04, 0.38, 1.5);
+  box-shadow: inset 8px -4px 0px 0px #fff;
+}
+.switch input:checked + .slider {
+  background-color: #00a6ff;
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(1.8em);
+  box-shadow: inset 15px -4px 0px 15px #ffcf48;
+}
+.star {
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  width: 5px;
+  transition: all 0.4s;
+  height: 5px;
+}
+
+.star_1 {
+  left: 2.5em;
+  top: 0.5em;
+}
+
+.star_2 {
+  left: 2.2em;
+  top: 1.2em;
+}
+
+.star_3 {
+  left: 3em;
+  top: 0.9em;
+}
+
+.switch input:checked ~ .slider .star {
+  opacity: 0;
+}
+
+.cloud {
+  width: 3.5em;
+  position: absolute;
+  bottom: -1.4em;
+  left: -1.1em;
+  opacity: 0;
+  transition: all 0.4s;
+}
+
+.switch input:checked ~ .slider .cloud {
+  opacity: 1;
+}
+
+
+/* dark mode */
+.dark-mode {
+  background-color: #0f172a;
+  color: white;
+}
+
+/* header */
+.dark-mode header {
+  background-color: #30353e;
+}
+/* body */
+body.dark-mode {
+  background-color: rgb(26, 29, 30);
+  color: white;
+}
+
+/* navbar */
+.dark-mode .topnav {
+  background-color: #020617;
+}
+
+/* cards */
+.dark-mode .card {
+  background-color: #1e293b;
+}
+
+/* search */
+.dark-mode .search-container {
+  background-color: #334155;
+}
+body.dark-mode .search-container:focus-within {
+  border-color: #4ade80;
+  box-shadow: 0 0 8px #22c55e;
+}
+.dark-mode .menu{
+  color: white;
+}
+/* body.dark-mode .menu:focus-within {
+  border-color: #4ade80;
+  box-shadow: 0 0 8px #22c55e;
+} */
+body.dark-mode .menu-overlay{
+    background-color: rgb(42, 48, 53);
+    color: white;
+}
+body.dark-mode .menu-header {
+  border-bottom: 1px solid #334155;
+}
+body.dark-mode .card:hover {
+  box-shadow: 0 0 10px #22c55e;
+}
+body, .menu-overlay, .card {
+  transition: all 0.3s ease;
+}
+
